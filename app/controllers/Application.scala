@@ -7,9 +7,6 @@ import play.api.data._
 import play.api.data.Forms._
 import models.Task
 
-import anorm._
-import anorm.SqlParser._
-
 object Application extends Controller {
 
   def index = Action {
@@ -19,8 +16,6 @@ object Application extends Controller {
   val taskForm = Form(
     "label" -> nonEmptyText
   )
-
-
 
   def tasks = Action {
     Ok(views.html.index(Task.all(), taskForm))
@@ -36,6 +31,9 @@ object Application extends Controller {
     )
   }
 
-  def deleteTask(id: Long) = TODO
+  def deleteTask(id: Long) = Action {
+    Task.delete(id)
+    Redirect(routes.Application.tasks)
+  }
 
 }
