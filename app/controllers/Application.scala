@@ -7,6 +7,8 @@ import play.api.data._
 import play.api.data.Forms._
 import models.Task
 
+import play.api.libs.json._
+
 object Application extends Controller {
 
   def index = Action {
@@ -19,6 +21,11 @@ object Application extends Controller {
 
   def tasks = Action {
     Ok(views.html.index(Task.all(), taskForm))
+  }
+
+  def getJsonTasks = Action {
+    val tasks = Task.all();
+    Ok(Json.toJson(tasks))
   }
 
   def newTask = Action { implicit request =>
