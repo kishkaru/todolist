@@ -1,8 +1,8 @@
-@(tasks: List[Task], taskForm: Form[String])
+@(taskForm: Form[String])
 @import helper._
 
 @main("Todo list") {
-    <h1>@tasks.size task(s)</h1>
+    <h1 id="header">task(s)</h1>
 
     <script src='@routes.Assets.at("javascripts/index.js")'></script>
     <ul id="tasks"></ul>
@@ -11,7 +11,7 @@
 
     @form(routes.Application.newTask) {
         @inputText(taskForm("label"))
-        <input type="submit" value="Create" class="btn btn-sm btn-success">
+        <input type="submit" value="Create">
     }
 
 }

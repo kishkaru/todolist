@@ -20,7 +20,7 @@ object Application extends Controller {
   )
 
   def tasks = Action {
-    Ok(views.html.index(Task.all(), taskForm))
+    Ok(views.html.index(taskForm))
   }
 
   def getJsonTasks = Action {
@@ -30,7 +30,7 @@ object Application extends Controller {
 
   def newTask = Action { implicit request =>
     taskForm.bindFromRequest.fold(
-      errors => BadRequest(views.html.index(Task.all(), errors)),
+      errors => BadRequest(views.html.index(errors)),
       label => {
         Task.create(label)
         Redirect(routes.Application.tasks)
@@ -40,7 +40,7 @@ object Application extends Controller {
 
   def deleteTask(id: Long) = Action {
     Task.delete(id)
-    Redirect(routes.Application.tasks)
+    Ok("deleted")
   }
 
 }
