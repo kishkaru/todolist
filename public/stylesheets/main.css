@@ -1,0 +1,30 @@
+body {
+  padding-top: 50px;
+}
+.starter-template {
+  padding: 40px 15px;
+  text-align: center;
+  background: #eee;
+}
+
+#intro{
+	font-family: Verdana;
+	font-size: 15px;
+}
+
+.hasBorder{
+    width:50%;
+    height: 50%;
+    border: 3px solid #000000;
+}
+
+.hasBorder2{
+    width:75%;
+    height: 75%;
+    border: 3px solid #000000;
+}
+
+.centered{
+    margin: 0 auto;
+    text-align: center;
+}
