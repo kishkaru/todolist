@@ -1,7 +1,7 @@
 @(taskForm: Form[String])
 @import helper._
 
-@main("Todo list") {
+@main("ToDoList") {
     <div class="centered clearfix center-block">
     <h1 id="header">task(s)</h1>
 
@@ -11,7 +11,7 @@
     <h2>Add a new task</h2>
 
     @form(routes.Application.newTask) {
-        @inputText(taskForm("label"))
+        @inputText(taskForm("name"))
         <input type="submit" value="Create" class="btn btn-sm btn-success">
     }
 

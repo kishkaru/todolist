@@ -16,7 +16,7 @@ object Application extends Controller {
   }
 
   val taskForm = Form(
-    "label" -> nonEmptyText
+    "name" -> nonEmptyText
   )
 
   def tasks = Action {
@@ -31,8 +31,8 @@ object Application extends Controller {
   def newTask = Action { implicit request =>
     taskForm.bindFromRequest.fold(
       errors => BadRequest(views.html.index(errors)),
-      label => {
-        Task.create(label)
+      name => {
+        Task.create(name)
         Redirect(routes.Application.tasks)
       }
     )
